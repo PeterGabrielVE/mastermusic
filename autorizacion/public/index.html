@@ -1,0 +1,290 @@
+<!doctype html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Master Music</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <script src="js/jquery.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/font.css">
+
+	<script src="js/main.js"></script>
+	<script src="js/buscar.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js"></script>
+ 
+    <script src="js/menu.js"></script>
+ 
+
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $(".playlist").playlist();
+    });
+  </script>
+  </head>
+
+  <body>
+
+  <header>
+    <div class="wrapper">
+      <div class="logo">
+        Master Music
+      </div>
+      <nav>
+
+          <a href="#" >Inicio</a>
+          <a href="#" class="boton-cerrar" onclick="mostrar()">Busqueda</a>
+          <a href="configuracion.html">Configuración</a>
+          <a href="#">¿Quienes Somos?</a>
+      
+      </nav>
+    </div>
+ 
+    <div id="container" class="container">
+
+        <div class="row">
+
+            <div class="col-md-12">
+               <a href="#" class="boton-cerrar" onclick="ocultar()">&times;</a>
+                <h1>Buscar Artista</h1>
+                <p>Escribe el nombre de un artista y luego has clic en el botón Buscar:</p>
+                <form id="search-form" role="form">
+                    <div class="form-group">
+                        <input type="text" id="query" value="" class="form-control" placeholder="Escribe el nombre de un Artista..."/>
+                    </div>
+                    <button type="submit" id="search" class="btn btn-primary" />Buscar</button>
+                    <button type="reset" id="search" class="btn btn-alert" />Limpiar</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div id="resultados">                   
+                </div>
+            </div>        
+        </div>
+
+    </div>
+
+  </header>
+<div class="wrap">
+    <div class="primaria">
+        
+      <div>
+        <ul class="playlist">
+          <li>
+            <div class="track">
+
+             <span class='controls' id='playToggle'></span> 
+             <span class='title'>Aldo</span>
+             <span class='minus'>-</span>
+             <span id='timeleft'>3:17</span>
+      
+              
+            </div>
+            <audio>
+              <source src="audio/mum.mp3" type="audio/mp3" />
+              <source src="audio/mum.ogg" type="audio/ogg" />
+              Your browser does not support the <code>audio</code> element.
+            </audio>
+          </li>
+        </ul>
+      </div>
+      
+    </div>
+    <div class="secundaria">
+      <div class="rep">
+        <video class="video" id="medio" autobuffer autoloop loop controls>
+          <source src="/media/video.oga">
+          <source src="/media/video.m4v">
+          <object type="video/ogg" data="/media/video.oga" width="320" height="240">
+          <param name="src" value="/media/video.oga">
+          <param name="autoplay" value="false">
+          <param name="autoStart" value="0">
+          </object>
+        </video>
+      </div>
+    </div>
+    <div class="terciaria">
+      <div class="publicidad">
+        <ul>
+          <li><img src="images/mm.png" alt="">Master Music corporación 100% Argentina</li>
+          <li><img src="images/Master.png" alt=""></li>
+          <li><img src="images/spotify.jpg" alt=""></li>
+        </ul>
+      </div>
+
+    </div>
+    <div class="social">
+          <ul>
+            <li><a href="https://www.facebook.com/mastermusicteam/" target="_blank" class="icon-facebook"></a></li>
+            <li><a href="#" target="_blank" class="icon-twitter"></a></li>
+            <li><a href="#" target="_blank" class="icon-instagram"></a></li>
+            <li><a href="#" target="_blank" class="icon-youtube"></a></li>
+            <li><a href="#" target="_blank" class="icon-spotify"></a></li>
+          </ul>
+        </div>
+
+  </div>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="../js/rep.js"></script>
+    <script id="resultados-template" type="text/x-handlebars-template">
+        {{#each albums.items}}
+            <div style="background-image:url({{images.0.url}})" data-album-id="{{id}}" class="cover">               
+            </div>
+            <!--
+            <br>
+            <h6 class="nombre">{{name}}</h6>
+            <h6 class="popularidad">{{href}}</h6>
+            -->        
+        {{/each}}
+    </script>
+
+    <div class="container">
+      <div id="login">
+        <h1>This is an example of the Authorization Code flow</h1>
+        <a href="/login" class="btn btn-primary">Log in with Spotify</a>
+      </div>
+      <div id="loggedin">
+        <div id="user-profile">
+        </div>
+        <div id="oauth">
+        </div>
+        <button class="btn btn-default" id="obtain-new-token">Obtain new token using the refresh token</button>
+      </div>
+    </div>
+
+    <script id="user-profile-template" type="text/x-handlebars-template">
+      <h1>Logged in as {{display_name}}</h1>
+      <div class="media">
+        <div class="pull-left">
+          <img class="media-object" width="150" src="{{images.0.url}}" />
+        </div>
+        <div class="media-body">
+          <dl class="dl-horizontal">
+            <dt>Display name</dt><dd class="clearfix">{{display_name}}</dd>
+            <dt>Id</dt><dd>{{id}}</dd>
+            <dt>Email</dt><dd>{{email}}</dd>
+            <dt>Spotify URI</dt><dd><a href="{{external_urls.spotify}}">{{external_urls.spotify}}</a></dd>
+            <dt>Link</dt><dd><a href="{{href}}">{{href}}</a></dd>
+            <dt>Profile Image</dt><dd class="clearfix"><a href="{{images.0.url}}">{{images.0.url}}</a></dd>
+            <dt>Country</dt><dd>{{country}}</dd>
+          </dl>
+        </div>
+      </div>
+    </script>
+
+    <script id="oauth-template" type="text/x-handlebars-template">
+      <h2>oAuth info</h2>
+      <dl class="dl-horizontal">
+        <dt>Access token</dt><dd class="text-overflow">{{access_token}}</dd>
+        <dt>Refresh token</dt><dd class="text-overflow">{{refresh_token}}</dd>
+      </dl>
+    </script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script>
+      (function() {
+
+        /**
+         * Obtains parameters from the hash of the URL
+         * @return Object
+         */
+        function getHashParams() {
+          var hashParams = {};
+          var e, r = /([^&;=]+)=?([^&;]*)/g,
+              q = window.location.hash.substring(1);
+          while ( e = r.exec(q)) {
+             hashParams[e[1]] = decodeURIComponent(e[2]);
+          }
+          return hashParams;
+        }
+
+        var userProfileSource = document.getElementById('user-profile-template').innerHTML,
+            userProfileTemplate = Handlebars.compile(userProfileSource),
+            userProfilePlaceholder = document.getElementById('user-profile');
+
+        var oauthSource = document.getElementById('oauth-template').innerHTML,
+            oauthTemplate = Handlebars.compile(oauthSource),
+            oauthPlaceholder = document.getElementById('oauth');
+
+        var params = getHashParams();
+
+        var access_token = params.access_token,
+            refresh_token = params.refresh_token,
+            error = params.error;
+
+        if (error) {
+          alert('There was an error during the authentication');
+        } else {
+          if (access_token) {
+            // render oauth info
+            oauthPlaceholder.innerHTML = oauthTemplate({
+              access_token: access_token,
+              refresh_token: refresh_token
+            });
+
+            $.ajax({
+                url: 'https://api.spotify.com/v1/me',
+                headers: {
+                  'Authorization': 'Bearer ' + access_token
+                },
+                success: function(response) {
+                  userProfilePlaceholder.innerHTML = userProfileTemplate(response);
+
+                  $('#login').hide();
+                  $('#loggedin').show();
+                }
+            });
+          } else {
+              // render initial screen
+              $('#login').show();
+              $('#loggedin').hide();
+          }
+
+          document.getElementById('obtain-new-token').addEventListener('click', function() {
+            $.ajax({
+              url: '/refresh_token',
+              data: {
+                'refresh_token': refresh_token
+              }
+            }).done(function(data) {
+              access_token = data.access_token;
+              oauthPlaceholder.innerHTML = oauthTemplate({
+                access_token: access_token,
+                refresh_token: refresh_token
+              });
+            });
+          }, false);
+        }
+      })();
+
+      function mostrar() {
+    document.getElementById("container").style.width = "300px";
+    document.getElementById("contenido").style.marginTop = "300px";
+    document.getElementById("abrir").style.display = "none";
+    document.getElementById("cerrar").style.display = "inline";
+}
+
+function ocultar() {
+    document.getElementById("container").style.width = "0";
+    document.getElementById("contenido").style.marginLeft = "0";
+    document.getElementById("abrir").style.display = "inline";
+    document.getElementById("cerrar").style.display = "none";
+}
+
+
+    </script>
+
+  
+  
+
+
+
+  </body>
+</html>
+
