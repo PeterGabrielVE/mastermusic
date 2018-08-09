@@ -1,5 +1,5 @@
       // Buscador
-      var templateSource = document.getElementById('resultados-template').innerHTML,
+      var templateSource = document.getElementById('resultados').innerHTML,
           template = Handlebars.compile(templateSource),
           resultadosPlaceholder = document.getElementById('resultados'),
           playingCssClass = 'playing',
